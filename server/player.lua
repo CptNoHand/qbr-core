@@ -96,15 +96,17 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
         }
     }
     PlayerData.metadata['xp'] = PlayerData.metadata['xp'] or {
-		['main'] = 0,
-		['herbalism'] = 0,
-		['mining'] = 0
-	}
-	PlayerData.metadata['levels'] = PlayerData.metadata['levels'] or {
-		['main'] = 0,
-		['herbalism'] = 0,
-		['mining'] = 0
-	}
+        ['main'] = 0,
+        ['herbalism'] = 0,
+        ['mining'] = 0,
+        ['hunting'] = 0
+    }
+      PlayerData.metadata['levels'] = PlayerData.metadata['levels'] or {
+        ['main'] = 0,
+        ['herbalism'] = 0,
+        ['mining'] = 0,
+        ['hunting'] = 0
+    }
 
     -- Job
     PlayerData.job = PlayerData.job or {}
