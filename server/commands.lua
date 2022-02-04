@@ -68,6 +68,11 @@ QBCore.Commands.Add('tp', 'TP To Player or Coords (Admin Only)', { { name = 'id/
     end
 end, 'admin')
 
+QBCore.Commands.Add('tpm', 'TP To Marker (Admin Only)', {}, false, function(source)
+    local src = source
+    TriggerClientEvent('QBCore:Command:GoToMarker', src)
+end, 'admin')
+
 QBCore.Commands.Add('togglepvp', 'Toggle PVP on the server (Admin Only)', {}, false, function(source)
     local src = source
     local pvp_state = QBConfig.Server.pvp
@@ -108,6 +113,11 @@ end, 'admin')
 QBCore.Commands.Add('dv', 'Delete Vehicle (Admin Only)', {}, false, function(source)
     local src = source
     TriggerClientEvent('QBCore:Command:DeleteVehicle', src)
+end, 'admin')
+
+QBCore.Commands.Add('horse', 'Spawn Horse (Admin Only)', { { name = 'model', help = 'Model name of the horse' } }, true, function(source, args)
+    local src = source
+    TriggerClientEvent('QBCore:Command:SpawnHorse', src, args[1])
 end, 'admin')
 
 -- Money
@@ -262,7 +272,7 @@ QBCore.Commands.Add('ooc', 'OOC Chat Message', {}, false, function(source, args)
                     multiline = true,
                     args = {'Proxmity OOC | '.. GetPlayerName(src), message}
                 })
-                TriggerEvent('qb-log:server:CreateLog', 'ooc', 'OOC', 'white', '**' .. GetPlayerName(src) .. '** (CitizenID: ' .. Player.PlayerData.citizenid .. ' | ID: ' .. src .. ') **Message:** ' .. message, false)
+                TriggerEvent('qbr-log:server:CreateLog', 'ooc', 'OOC', 'white', '**' .. GetPlayerName(src) .. '** (CitizenID: ' .. Player.PlayerData.citizenid .. ' | ID: ' .. src .. ') **Message:** ' .. message, false)
             end
         end
     end
