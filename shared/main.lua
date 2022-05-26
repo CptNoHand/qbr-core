@@ -11,11 +11,13 @@ QBShared.RandomStr = function(length)
     if length <= 0 then return '' end
     return QBShared.RandomStr(length - 1) .. StringCharset[math.random(1, #StringCharset)]
 end
+exports('RandomStr', QBShared.RandomStr)
 
 QBShared.RandomInt = function(length)
     if length <= 0 then return '' end
     return QBShared.RandomInt(length - 1) .. NumberCharset[math.random(1, #NumberCharset)]
 end
+exports('RandomInt', QBShared.RandomInt)
 
 QBShared.SplitStr = function(str, delimiter)
     local result = { }
@@ -29,47 +31,79 @@ QBShared.SplitStr = function(str, delimiter)
 	result[#result+1] = string.sub(str, from)
     return result
 end
+exports('SplitStr', QBShared.SplitStr)
 
 QBShared.Trim = function(value)
 	if not value then return nil end
     return (string.gsub(value, '^%s*(.-)%s*$', '%1'))
 end
+exports('Trim', QBShared.Trim)
 
 QBShared.Round = function(value, numDecimalPlaces)
     if not numDecimalPlaces then return math.floor(value + 0.5) end
     local power = 10 ^ numDecimalPlaces
     return math.floor((value * power) + 0.5) / (power)
 end
+exports('Round', QBShared.Round)
 
-QBShared.ChangeVehicleExtra = function (vehicle, extra, enable)
-	if DoesExtraExist(vehicle, extra) then
-		if enable then
-			SetVehicleExtra(vehicle, extra, false)
-			if not IsVehicleExtraTurnedOn(vehicle, extra) then
-				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
-			end
-		else
-			SetVehicleExtra(vehicle, extra, true)
-			if IsVehicleExtraTurnedOn(vehicle, extra) then
-				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
-			end
-		end
-	end
-end
+-- Shared
 
-QBShared.SetDefaultVehicleExtras = function (vehicle, config)
-    -- Clear Extras
-    for i=1,20 do
-        if DoesExtraExist(vehicle, i) then
-            SetVehicleExtra(vehicle, i, 1)
-        end
+exports('GetGangs', function()
+    return QBShared.Gangs
+end)
+
+exports('GetHorses', function()
+    return QBShared.Horses
+end)
+
+exports('GetItem', function(item)
+    if QBShared.Items[item] then
+        return QBShared.Items[item]
     end
+end)
 
-    for id, enabled in pairs(config) do
-        QBShared.ChangeVehicleExtra(vehicle, tonumber(id), true)
-    end
-end
+exports('GetItems', function()
+    return QBShared.Items
+end)
 
-QBShared.StarterItems = {
-    ['apple'] = { amount = 1, item = 'apple' }
-}
+exports('GetJobs', function()
+    return QBShared.Jobs
+end)
+
+exports('GetVehicles', function()
+    return QBShared.Vehicles
+end)
+
+exports('GetWeapons', function()
+    return QBShared.Weapons
+end)
+
+-- QBShared.ChangeVehicleExtra = function (vehicle, extra, enable)
+-- 	if DoesExtraExist(vehicle, extra) then
+-- 		if enable then
+-- 			SetVehicleExtra(vehicle, extra, false)
+-- 			if not IsVehicleExtraTurnedOn(vehicle, extra) then
+-- 				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
+-- 			end
+-- 		else
+-- 			SetVehicleExtra(vehicle, extra, true)
+-- 			if IsVehicleExtraTurnedOn(vehicle, extra) then
+-- 				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
+-- 			end
+-- 		end
+-- 	end
+-- end
+-- exports('', )
+
+-- QBShared.SetDefaultVehicleExtras = function (vehicle, config)
+--     -- Clear Extras
+--     for i=1,20 do
+--         if DoesExtraExist(vehicle, i) then
+--             SetVehicleExtra(vehicle, i, 1)
+--         end
+--     end
+
+--     for id, enabled in pairs(config) do
+--         QBShared.ChangeVehicleExtra(vehicle, tonumber(id), true)
+--     end
+-- end
