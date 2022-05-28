@@ -1,5 +1,5 @@
 QBConfig = {}
-QBConfig.MaxPlayers = GetConvarInt('sv_maxclients', 48) -- Gets max players from config file, default 48
+QBConfig.MaxPlayers = GetConvarInt('sv_maxclients', 32) -- Gets max players from config file, default 48
 QBConfig.DefaultSpawn = vector4(-1035.71, -2731.87, 12.86, 0.0)
 QBConfig.UpdateInterval = 5 -- how often to update player data in minutes
 QBConfig.StatusInterval = 5000 -- how often to check hunger/thirst status in ms
@@ -18,10 +18,10 @@ QBConfig.Money.PayCheckSociety = false -- If true paycheck will come from the so
 
 QBConfig.Player = {}
 QBConfig.Player.RevealMap = true
-QBConfig.Player.MaxWeight = 120000 -- Max weight a player can carry (currently 120kg, written in grams)
-QBConfig.Player.MaxInvSlots = 41 -- Max inventory slots for a player
-QBConfig.Player.HungerRate = 4.2 -- Rate at which hunger goes down.
-QBConfig.Player.ThirstRate = 3.8 -- Rate at which thirst goes down.
+QBConfig.Player.MaxWeight = 35000 -- Max weight a player can carry (currently 120kg, written in grams)
+QBConfig.Player.MaxInvSlots = 24 -- Max inventory slots for a player
+QBConfig.Player.HungerRate = 2.2 -- Rate at which hunger goes down.
+QBConfig.Player.ThirstRate = 2.8 -- Rate at which thirst goes down.
 QBConfig.Player.Bloodtypes = {
     "A+",
     "A-",
