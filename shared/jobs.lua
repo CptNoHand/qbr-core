@@ -12,7 +12,7 @@ QBShared.Jobs = {
             },
         },
 	},
-	['police'] = {
+	['lawman'] = {
 		label = 'Law Enforcement',
 		defaultDuty = true,
 		offDutyPay = false,
@@ -40,7 +40,7 @@ QBShared.Jobs = {
             },
         },
 	},
-	['ambulance'] = {
+	['doctor'] = {
 		label = 'EMS',
 		defaultDuty = true,
 		offDutyPay = false,
